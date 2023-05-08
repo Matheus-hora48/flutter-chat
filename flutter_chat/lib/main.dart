@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         title: "Flutter Chat",
         initialRoute: AppPages.initial,
         getPages: AppPages.routes,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

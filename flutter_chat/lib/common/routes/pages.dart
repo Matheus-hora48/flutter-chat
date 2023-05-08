@@ -14,6 +14,6 @@ class AppPages {
       name: AppRoutes.initial,
       page: () => const WelcomePage(),
       binding: WelcomeBinding(),
-    )
+    ),
   ];
 }

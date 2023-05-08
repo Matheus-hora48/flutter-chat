@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -13,57 +12,107 @@ class WelcomePage extends GetView<WelcomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: 360.w,
-        height: 780.w,
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            PageView(
-              scrollDirection: Axis.horizontal,
-              reverse: false,
-              onPageChanged: (index) {},
-              controller: PageController(
-                initialPage: 0,
-                keepPage: false,
-                viewportFraction: 1,
+      body: Obx(
+        () => SizedBox(
+          width: 360.w,
+          height: 780.w,
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              PageView(
+                scrollDirection: Axis.horizontal,
+                reverse: false,
+                onPageChanged: (index) {
+                  controller.changePage(index);
+                },
+                controller: PageController(
+                  initialPage: 0,
+                  keepPage: false,
+                  viewportFraction: 1,
+                ),
+                pageSnapping: true,
+                physics: const ClampingScrollPhysics(),
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage("assets/images/banner1.png"),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage("assets/images/banner2.png"),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage("assets/images/banner3.png"),
+                      ),
+                    ),
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Positioned(
+                          bottom: 70,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              controller.handleSingIn();
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                Colors.white,
+                              ),
+                              foregroundColor: MaterialStateProperty.all(
+                                Colors.black,
+                              ),
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              side: MaterialStateProperty.all(
+                                const BorderSide(color: Colors.white),
+                              ),
+                            ),
+                            child: const Text("Login"),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              pageSnapping: true,
-              physics: const ClampingScrollPhysics(),
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage("assets/images/banner1.png"),
+              Positioned(
+                bottom: 40,
+                child: DotsIndicator(
+                  position: controller.state.index.value,
+                  dotsCount: 3,
+                  reversed: false,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  decorator: DotsDecorator(
+                    size: const Size.square(9),
+                    activeSize: const Size(18, 9),
+                    activeShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
                 ),
-                Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage("assets/images/banner2.png"),
-                    ),
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage("assets/images/banner3.png"),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
