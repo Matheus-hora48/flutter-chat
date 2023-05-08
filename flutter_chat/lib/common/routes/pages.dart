@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/common/routes/names.dart';
-import 'package:flutter_chat/pages/welcome/bindings.dart';
-import 'package:flutter_chat/pages/welcome/view.dart';
+import 'package:flutter_chat/pages/welcome/index.dart';
 import 'package:get/get.dart';
 
 class AppPages {
