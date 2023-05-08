@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/common/routes/names.dart';
 import 'package:flutter_chat/pages/welcome/index.dart';
+import 'package:flutter_chat/pages/auth/index.dart';
 import 'package:get/get.dart';
 
 class AppPages {
@@ -14,6 +15,12 @@ class AppPages {
       name: AppRoutes.initial,
       page: () => const WelcomePage(),
       binding: WelcomeBinding(),
+    ),
+    
+    GetPage(
+      name: AppRoutes.singIn,
+      page: () => const SingInPage(),
+      binding: SingInBinding(),
     ),
   ];
 }

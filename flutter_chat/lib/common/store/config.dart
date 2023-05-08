@@ -11,10 +11,10 @@ class ConfigStore extends GetxController {
   PackageInfo? _platform;
   String get version => _platform?.version ?? '-';
   bool get isRelease => const bool.fromEnvironment("dart.vm.product"); //what's this
-  Locale locale = const Locale('en', 'US');
+  Locale locale = const Locale('pt', 'BR');
   List<Locale> languages = [
     const Locale('en', 'US'),
-    const Locale('zh', 'CN'),
+    const Locale('pt', 'BR'),
   ];
 
   @override
