@@ -15,21 +15,24 @@ class AppPages {
 
   static final List<GetPage> routes = [
     GetPage(
-      name: AppRoutes.initial,
-      page: () => const WelcomePage(),
-      binding: WelcomeBinding(),
-    ),
+        name: AppRoutes.initial,
+        page: () => const WelcomePage(),
+        binding: WelcomeBinding(),
+        middlewares: [
+          RouteWelcomeMiddleware(priority: 1),
+        ]),
     GetPage(
       name: AppRoutes.singIn,
       page: () => const SingInPage(),
       binding: SingInBinding(),
     ),
     GetPage(
-        name: AppRoutes.application,
-        page: () => const ApplicationPage(),
-        binding: ApplicationBinding(),
-        middlewares: [
-          //RouteAuthMiddleware(priority: 1)
-        ]),
+      name: AppRoutes.application,
+      page: () => const ApplicationPage(),
+      binding: ApplicationBinding(),
+      middlewares: [
+        RouteAuthMiddleware(priority: 1),
+      ],
+    ),
   ];
 }
