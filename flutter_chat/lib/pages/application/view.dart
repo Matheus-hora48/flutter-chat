@@ -1,11 +1,7 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/common/style/style.dart';
 import 'package:flutter_chat/common/values/colors.dart';
-import 'package:flutter_chat/common/values/shadows.dart';
-import 'package:flutter_chat/common/widgets/widgets.dart';
 import 'package:flutter_chat/pages/application/index.dart';
-import 'package:flutter_chat/pages/auth/controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class ApplicationPage extends GetView<ApplicationController> {
@@ -38,8 +34,24 @@ class ApplicationPage extends GetView<ApplicationController> {
       );
     }
 
+    Widget _buildBottomNavigationBar() {
+      return Obx(
+        () => BottomNavigationBar(
+          items: controller.bottomTabs,
+          currentIndex: controller.state.page,
+          type: BottomNavigationBarType.fixed,
+          onTap: controller.handleNavBarTap,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          unselectedItemColor: AppColors.tabBarElement,
+          selectedItemColor: AppColors.thirdElement,
+        ),
+      );
+    }
+
     return Scaffold(
       body: _buildPageView(),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 }

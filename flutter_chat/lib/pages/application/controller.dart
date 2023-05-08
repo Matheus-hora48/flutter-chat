@@ -15,6 +15,10 @@ class ApplicationController extends GetxController {
     state.page = index;
   }
 
+  void handleNavBarTap(int index){
+    pageController.jumpToPage(index);
+  }
+
   @override
   void onInit() {
     super.onInit();
