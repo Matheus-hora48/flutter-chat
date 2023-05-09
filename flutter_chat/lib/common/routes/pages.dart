@@ -6,6 +6,7 @@ import 'package:flutter_chat/pages/auth/index.dart';
 import 'package:get/get.dart';
 
 import '../../pages/application/index.dart';
+import '../../pages/contact/index.dart';
 
 class AppPages {
   static const initial = AppRoutes.initial;
@@ -34,5 +35,10 @@ class AppPages {
         RouteAuthMiddleware(priority: 1),
       ],
     ),
+    GetPage(
+      name: AppRoutes.contact,
+      page: () => const ContactPage(),
+      binding: ContactBinding(),
+    )
   ];
 }
