@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/common/middlewares/middlewares.dart';
 import 'package:flutter_chat/common/routes/names.dart';
-import 'package:flutter_chat/pages/welcome/index.dart';
-import 'package:flutter_chat/pages/auth/index.dart';
 import 'package:get/get.dart';
 
 import '../../pages/application/index.dart';
 import '../../pages/contact/index.dart';
+import '../../pages/auth/index.dart';
+import '../../pages/welcome/index.dart';
+import '../../pages/chat/index.dart';
 
 class AppPages {
   static const initial = AppRoutes.initial;
@@ -39,6 +40,11 @@ class AppPages {
       name: AppRoutes.contact,
       page: () => const ContactPage(),
       binding: ContactBinding(),
-    )
+    ),
+    GetPage(
+      name: AppRoutes.contact,
+      page: () => const ChatPage(),
+      binding: ChatBinding(),
+    ),
   ];
 }
