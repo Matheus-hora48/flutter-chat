@@ -156,10 +156,10 @@ class ChatPage extends GetView<ChatController> {
                 height: 50.h,
                 child: Container(
                   width: 360.w,
-                  height: 50.w,
+                  height: 80.w,
                   color: AppColors.primaryBackground,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: 217.w,
@@ -175,6 +175,9 @@ class ChatPage extends GetView<ChatController> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        width: 20.w,
+                      ),
                       Container(
                         height: 30.h,
                         width: 30.h,
@@ -189,6 +192,9 @@ class ChatPage extends GetView<ChatController> {
                             _showPicker(context);
                           },
                         ),
+                      ),
+                      SizedBox(
+                        width: 20.w,
                       ),
                       Container(
                         height: 30.h,
