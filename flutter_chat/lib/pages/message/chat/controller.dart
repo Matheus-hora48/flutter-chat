@@ -1,9 +1,15 @@
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_chat/common/utils/utils.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/common/entities/entities.dart';
 import 'package:flutter_chat/common/store/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'index.dart';
+
 import 'package:get/get.dart';
 
 class ChatController extends GetxController {
@@ -16,6 +22,32 @@ class ChatController extends GetxController {
   FocusNode contextNode = FocusNode();
   final user_id = UserStore.to.token;
   final db = FirebaseFirestore.instance;
+  var listener;
+
+  File? _photo;
+  final ImagePicker _picker = ImagePicker();
+
+  Future imgFromGallery() async {
+    final pickedFile = await _picker.pickImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      _photo = File(pickedFile.path);
+      uploadFile();
+    } else {
+      print('Não foi selecionada nenhuma imagem');
+    }
+  }
+
+  Future uploadFile() {
+    if (_photo == null) return;
+    final filename = getRandomString(15) + extension(_photo!.path);
+    try {
+      final res = FirebaseStorage.instance.ref("chat").child(filename);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   void onInit() {
@@ -52,5 +84,47 @@ class ChatController extends GetxController {
       "last_msg": sendContent,
       "last_time": Timestamp.now(),
     });
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    var message = db
+        .collection("message")
+        .doc(doc_id)
+        .collection("msglist")
+        .withConverter(
+          fromFirestore: Msgcontent.fromFirestore,
+          toFirestore: (Msgcontent msgcontent, options) =>
+              msgcontent.toFirestore(),
+        )
+        .orderBy(
+          "addtime",
+          descending: true,
+        );
+    state.msgcontentlist.clear();
+    listener = message.snapshots().listen((event) {
+      for (var change in event.docChanges) {
+        switch (change.type) {
+          case DocumentChangeType.added:
+            if (change.doc.data() != null) {
+              state.msgcontentlist.insert(0, change.doc.data()!);
+            }
+            break;
+          case DocumentChangeType.modified:
+            break;
+          case DocumentChangeType.removed:
+            break;
+          default:
+        }
+      }
+    }, onError: (error) => print("Falha: $error"));
+  }
+
+  @override
+  void disponse() {
+    msgScrolling.dispose();
+    listener.cancel();
+    super.dispose();
   }
 }
