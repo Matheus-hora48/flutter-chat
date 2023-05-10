@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat/common/values/colors.dart';
 import 'package:flutter_chat/common/values/shadows.dart';
 import 'package:flutter_chat/common/widgets/widgets.dart';
-import 'package:flutter_chat/pages/chat/controller.dart';
+import 'package:flutter_chat/pages/message/chat/controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -93,7 +93,7 @@ class ChatPage extends GetView<ChatController> {
                               fontFamily: 'Avenir',
                               fontWeight: FontWeight.normal,
                               color: AppColors.primaryBackground,
-                              fontSize: 14.sp,
+                              fontSize: 12.sp,
                             ),
                           )
                         ],
@@ -156,19 +156,20 @@ class ChatPage extends GetView<ChatController> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10.w, top: 5.h),
-                        width: 35.h,
-                        height: 35.h,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                          onPressed: () {
+                        height: 30.h,
+                        width: 30.h,
+                        margin: EdgeInsets.only(left: 5.w),
+                        child: GestureDetector(
+                          child: const Icon(
+                            Icons.send_rounded,
+                            size: 35,
+                            color: Colors.blueAccent,
+                          ),
+                          onTap: () {
                             controller.sendMessage();
                           },
-                          icon: Icon(Icons.send_rounded),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

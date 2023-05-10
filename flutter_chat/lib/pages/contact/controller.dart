@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_chat/common/entities/entities.dart';
 import 'package:flutter_chat/common/entities/user.dart';
+import 'package:flutter_chat/common/routes/routes.dart';
 import 'package:flutter_chat/common/store/store.dart';
 import 'package:flutter_chat/pages/contact/state.dart';
 import 'package:get/get.dart';
@@ -73,7 +74,7 @@ class ContactController extends GetxController {
     } else {
       if (from_messages.docs.isNotEmpty) {
         Get.toNamed(
-          "/chat",
+          AppRoutes.chat,
           parameters: {
             "doc_id": from_messages.docs.first.id,
             "to_uid": to_userdata.id ?? "",

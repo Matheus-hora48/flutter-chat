@@ -7,7 +7,7 @@ import '../../pages/application/index.dart';
 import '../../pages/contact/index.dart';
 import '../../pages/auth/index.dart';
 import '../../pages/welcome/index.dart';
-import '../../pages/chat/index.dart';
+import '../../pages/message/chat/index.dart';
 
 class AppPages {
   static const initial = AppRoutes.initial;
@@ -42,7 +42,7 @@ class AppPages {
       binding: ContactBinding(),
     ),
     GetPage(
-      name: AppRoutes.contact,
+      name: AppRoutes.chat,
       page: () => const ChatPage(),
       binding: ChatBinding(),
     ),
