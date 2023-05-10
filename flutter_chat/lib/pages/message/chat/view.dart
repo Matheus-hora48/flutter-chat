@@ -6,6 +6,7 @@ import 'package:flutter_chat/common/widgets/widgets.dart';
 import 'package:flutter_chat/pages/message/chat/controller.dart';
 import 'package:flutter_chat/pages/message/chat/widgets/chat_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class ChatPage extends GetView<ChatController> {
@@ -124,7 +125,8 @@ class ChatPage extends GetView<ChatController> {
                 leading: const Icon(Icons.photo_library),
                 title: const Text("Galeria"),
                 onTap: () {
-                  
+                  controller.imgFromGallery();
+                  Get.back();
                 },
               ),
               ListTile(

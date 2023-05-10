@@ -9,6 +9,7 @@ import 'package:flutter_chat/common/store/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'index.dart';
+import 'package:path/path.dart';
 
 import 'package:get/get.dart';
 
@@ -39,11 +40,57 @@ class ChatController extends GetxController {
     }
   }
 
-  Future uploadFile() {
+  Future getImgUrl(String name) async {
+    final spaceRef = FirebaseStorage.instance.ref("chat").child(name);
+    var str = await spaceRef.getDownloadURL();
+    return str;
+  }
+
+  sendImageMessage(String url) async {
+    final content = Msgcontent(
+      uid: user_id,
+      content: url,
+      type: "image",
+      addtime: Timestamp.now(),
+    );
+    await db
+        .collection("message")
+        .doc(doc_id)
+        .collection("msglist")
+        .withConverter(
+            fromFirestore: Msgcontent.fromFirestore,
+            toFirestore: (Msgcontent msgcontent, options) =>
+                msgcontent.toFirestore())
+        .add(content)
+        .then((DocumentReference doc) {
+      textController.clear();
+      Get.focusScope?.unfocus();
+    });
+    await db.collection("message").doc(doc_id).update({
+      "last_msg": "[image]",
+      "last_time": Timestamp.now(),
+    });
+  }
+
+  Future uploadFile() async {
     if (_photo == null) return;
     final filename = getRandomString(15) + extension(_photo!.path);
     try {
-      final res = FirebaseStorage.instance.ref("chat").child(filename);
+      final ref = FirebaseStorage.instance.ref("chat").child(filename);
+      await ref.putFile(_photo!).snapshotEvents.listen((event) async {
+        switch (event.state) {
+          case TaskState.running:
+            break;
+
+          case TaskState.paused:
+            break;
+
+          case TaskState.success:
+            String imgUrl = await getImgUrl(filename);
+            sendImageMessage(imgUrl);
+            break;
+        }
+      });
     } catch (e) {
       print(e);
     }
@@ -100,7 +147,7 @@ class ChatController extends GetxController {
         )
         .orderBy(
           "addtime",
-          descending: true,
+          descending: false,
         );
     state.msgcontentlist.clear();
     listener = message.snapshots().listen((event) {
