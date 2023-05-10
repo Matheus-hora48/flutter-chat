@@ -85,7 +85,7 @@ class ContactController extends GetxController {
       }
       if (from_messages.docs.isNotEmpty) {
         Get.toNamed(
-          "/chat",
+          AppRoutes.chat,
           parameters: {
             "doc_id": to_messages.docs.first.id,
             "to_uid": to_userdata.id ?? "",
