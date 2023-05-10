@@ -83,7 +83,7 @@ class ContactController extends GetxController {
           },
         );
       }
-      if (from_messages.docs.isNotEmpty) {
+      if (to_messages.docs.isNotEmpty) {
         Get.toNamed(
           AppRoutes.chat,
           parameters: {
