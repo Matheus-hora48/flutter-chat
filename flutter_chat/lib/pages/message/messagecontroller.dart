@@ -16,15 +16,23 @@ class MessageController extends GetxController {
     initialRefresh: true,
   );
 
-  void onRefresh(){
-    asyncLoadAllData().then((_){
+  void onRefresh() {
+    asyncLoadAllData().then((_) {
       refreshController.refreshCompleted(resetFooterState: true);
-    }).catchErro((_){
+    }).catchErro((_) {
       refreshController.refreshFailed();
     });
   }
 
-   asyncLoadAllData() async {
+  void onLoading() {
+    asyncLoadAllData().then((_) {
+      refreshController.loadComplete();
+    }).catchErro((_) {
+      refreshController.loadFailed();
+    });
+  }
+
+  asyncLoadAllData() async {
     var from_messages = await db
         .collection("message")
         .withConverter(

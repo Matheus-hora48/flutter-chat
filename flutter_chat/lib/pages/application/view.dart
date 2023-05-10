@@ -3,6 +3,7 @@ import 'package:flutter_chat/common/style/style.dart';
 import 'package:flutter_chat/common/values/colors.dart';
 import 'package:flutter_chat/pages/application/index.dart';
 import 'package:flutter_chat/pages/contact/index.dart';
+import 'package:flutter_chat/pages/message/view.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class ApplicationPage extends GetView<ApplicationController> {
@@ -16,11 +17,7 @@ class ApplicationPage extends GetView<ApplicationController> {
         controller: controller.pageController,
         onPageChanged: controller.handlePageChanged,
         children: [
-          Container(
-            child: const Center(
-              child: Text('Conversas'),
-            ),
-          ),
+          const MessagePage(),
           const ContactPage(),
           Container(
             child: const Center(
