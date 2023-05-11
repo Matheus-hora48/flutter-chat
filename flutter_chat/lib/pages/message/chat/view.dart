@@ -134,7 +134,10 @@ class ChatPage extends GetView<ChatController> {
               ListTile(
                 leading: const Icon(Icons.photo_camera),
                 title: const Text("Camera"),
-                onTap: () {},
+                onTap: () {
+                  controller.imgFromCamera();
+                  Get.back();
+                },
               ),
             ],
           ),
