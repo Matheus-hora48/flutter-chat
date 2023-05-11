@@ -38,7 +38,7 @@ class MessageController extends GetxController {
   void onLoading() {
     asyncLoadAllData().then((_) {
       refreshController.loadComplete();
-    }).catchErro((_) {
+    }).catchError((_) {
       refreshController.loadFailed();
     });
   }
