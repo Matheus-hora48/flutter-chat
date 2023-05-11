@@ -20,9 +20,7 @@ class PhotoImageView extends GetView<PhotoImageViewController> {
       title: const Text(
         "Foto",
         style: TextStyle(
-            color: AppColors.primaryText,
-            fontSize: 16,
-            fontWeight: FontWeight.normal),
+            color: Colors.white, fontSize: 16, fontWeight: FontWeight.normal),
       ),
       flexibleSpace: Container(
         decoration: const BoxDecoration(

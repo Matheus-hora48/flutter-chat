@@ -102,7 +102,7 @@ class ChatPage extends GetView<ChatController> {
                                 fontSize: 12.sp,
                               ),
                             ),
-                          ),  
+                          ),
                         ],
                       ),
                     ),
@@ -161,34 +161,38 @@ class ChatPage extends GetView<ChatController> {
                   height: 80.w,
                   color: AppColors.primaryBackground,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: 217.w,
                         height: 50.h,
                         child: TextField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: 3,
-                          controller: controller.textController,
-                          autofocus: false,
-                          focusNode: controller.contextNode,
-                          decoration: const InputDecoration(
-                            hintText: "Enviar mensagem..",
-                          ),
-                        ),
+                            keyboardType: TextInputType.multiline,
+                            maxLines: 3,
+                            controller: controller.textController,
+                            autofocus: false,
+                            focusNode: controller.contextNode,
+                            decoration: const InputDecoration(
+                              hintText: "Enviar mensagem..",
+                              isCollapsed: false,
+                            )),
                       ),
                       SizedBox(
                         width: 20.w,
                       ),
                       Container(
-                        height: 30.h,
-                        width: 30.h,
-                        margin: EdgeInsets.only(left: 5.w),
+                        height: 45.h,
+                        width: 45.h,
+                        margin: EdgeInsets.only(bottom: 1.w),
+                        decoration: const BoxDecoration(
+                          color: AppColors.primaryElement,
+                          shape: BoxShape.circle,
+                        ),
                         child: GestureDetector(
                           child: const Icon(
                             Icons.photo_camera_back_rounded,
-                            size: 35,
-                            color: Colors.blueAccent,
+                            color: Colors.white,
                           ),
                           onTap: () {
                             _showPicker(context);
@@ -196,22 +200,28 @@ class ChatPage extends GetView<ChatController> {
                         ),
                       ),
                       SizedBox(
-                        width: 20.w,
+                        width: 10.w,
                       ),
                       Container(
-                        height: 30.h,
-                        width: 30.h,
-                        margin: EdgeInsets.only(left: 5.w),
+                        height: 45.h,
+                        width: 45.h,
+                        margin: EdgeInsets.only(bottom: 1.w),
+                        decoration: const BoxDecoration(
+                          color: AppColors.primaryElement,
+                          shape: BoxShape.circle,
+                        ),
                         child: GestureDetector(
                           child: const Icon(
                             Icons.send_rounded,
-                            size: 35,
-                            color: Colors.blueAccent,
+                            color: Colors.white,
                           ),
                           onTap: () {
                             controller.sendMessage();
                           },
                         ),
+                      ),
+                      SizedBox(
+                        width: 20.w,
                       ),
                     ],
                   ),

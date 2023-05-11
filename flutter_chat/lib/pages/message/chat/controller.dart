@@ -108,29 +108,31 @@ class ChatController extends GetxController {
 
   sendMessage() async {
     String sendContent = textController.text;
-    final content = Msgcontent(
-      uid: user_id,
-      content: sendContent,
-      type: "text",
-      addtime: Timestamp.now(),
-    );
-    await db
-        .collection("message")
-        .doc(doc_id)
-        .collection("msglist")
-        .withConverter(
-            fromFirestore: Msgcontent.fromFirestore,
-            toFirestore: (Msgcontent msgcontent, options) =>
-                msgcontent.toFirestore())
-        .add(content)
-        .then((DocumentReference doc) {
-      textController.clear();
-      Get.focusScope?.unfocus();
-    });
-    await db.collection("message").doc(doc_id).update({
-      "last_msg": sendContent,
-      "last_time": Timestamp.now(),
-    });
+    if (sendContent.isNotEmpty) {
+      final content = Msgcontent(
+        uid: user_id,
+        content: sendContent,
+        type: "text",
+        addtime: Timestamp.now(),
+      );
+      await db
+          .collection("message")
+          .doc(doc_id)
+          .collection("msglist")
+          .withConverter(
+              fromFirestore: Msgcontent.fromFirestore,
+              toFirestore: (Msgcontent msgcontent, options) =>
+                  msgcontent.toFirestore())
+          .add(content)
+          .then((DocumentReference doc) {
+        textController.clear();
+        Get.focusScope?.unfocus();
+      });
+      await db.collection("message").doc(doc_id).update({
+        "last_msg": sendContent,
+        "last_time": Timestamp.now(),
+      });
+    }
   }
 
   @override
