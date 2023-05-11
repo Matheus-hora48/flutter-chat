@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_chat/common/entities/entities.dart';
 import 'package:flutter_chat/common/entities/msg.dart';
 import 'package:flutter_chat/common/store/user.dart';
@@ -18,6 +19,13 @@ class MessageController extends GetxController {
   final RefreshController refreshController = RefreshController(
     initialRefresh: true,
   );
+
+  @override
+  void onReady() {
+    super.onReady();
+    getUserLocation();
+    getFmcToken();
+  }
 
   void onRefresh() {
     asyncLoadAllData().then((_) {
@@ -77,19 +85,35 @@ class MessageController extends GetxController {
           "https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBGLUxRYJgu8Q1PuVVHKXwBVGAILiqchhQ";
       var response = await HttpUtil().get(url);
       MyLocation location_res = MyLocation.fromJson(response);
-      if (location_res.status == "OK") {
-        String? myadress = location_res.results?.first.formattedAddress;
-        if (myadress != null) {
-          var userLocation = await db.collection("users").where("id", isEqualTo: token);
-              
-          if (userLocation.docs.isNotEmpty) {
+      if (location_res.status == 'OK') {
+        String? myanddresss = location_res.results?.first.formattedAddress;
+        if (myanddresss != null) {
+          var user_location =
+              await db.collection("users").where("id", isEqualTo: token).get();
+          if (user_location.docs.isNotEmpty) {
             var doc_id = user_location.docs.first.id;
-            await
+            await db.collection("users").doc(doc_id).update(
+              {
+                "location": myanddresss,
+              },
+            );
           }
         }
       }
     } catch (e) {
       print('Localização erro: $e');
+    }
+  }
+
+  getFmcToken() async {
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    if (fcmToken != null) {
+      var user =
+          await db.collection("users").where("id", isEqualTo: token).get();
+      if (user.docs.isNotEmpty) {
+        var doc_id = user.docs.first.id;
+        await db.collection("users").doc(doc_id).update({"fcmtoken": fcmToken});
+      }
     }
   }
 }

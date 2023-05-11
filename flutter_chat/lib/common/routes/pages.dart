@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat/common/middlewares/middlewares.dart';
 import 'package:flutter_chat/common/routes/names.dart';
+import 'package:flutter_chat/pages/message/photoview/index.dart';
 import 'package:get/get.dart';
 
 import '../../pages/application/index.dart';
@@ -45,6 +46,11 @@ class AppPages {
       name: AppRoutes.chat,
       page: () => const ChatPage(),
       binding: ChatBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.photoImgView,
+      page: () => const PhotoImageView(),
+      binding: PhotoImageViewBinding(),
     ),
   ];
 }

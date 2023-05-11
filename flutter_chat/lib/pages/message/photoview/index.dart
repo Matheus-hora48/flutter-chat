@@ -1,6 +1,6 @@
-library contact;
+library photoview;
 
 export './state.dart';
-export './messagecontroller.dart';
+export './controller.dart';
 export './bindings.dart';
 export './view.dart';

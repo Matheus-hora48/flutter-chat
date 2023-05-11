@@ -90,17 +90,19 @@ class ChatPage extends GetView<ChatController> {
                               fontSize: 16.sp,
                             ),
                           ),
-                          Text(
-                            'Localização desconhecida',
-                            overflow: TextOverflow.clip,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontFamily: 'Avenir',
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.primaryBackground,
-                              fontSize: 12.sp,
+                          Obx(
+                            () => Text(
+                              controller.state.to_location.value,
+                              overflow: TextOverflow.clip,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontFamily: 'Avenir',
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.primaryBackground,
+                                fontSize: 12.sp,
+                              ),
                             ),
-                          )
+                          ),  
                         ],
                       ),
                     ),
