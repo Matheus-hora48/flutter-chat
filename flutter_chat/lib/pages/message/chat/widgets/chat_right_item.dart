@@ -14,7 +14,7 @@ Widget chatRightItem(Msgcontent item) {
         ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: 230.w,
-            maxHeight: 40.w,
+            maxHeight: 360.w,
           ),
           child: Container(
             margin: EdgeInsets.only(right: 10.w, bottom: 0.w),
@@ -37,7 +37,7 @@ Widget chatRightItem(Msgcontent item) {
                 ? Text("${item.content}")
                 : ConstrainedBox(
                     constraints: BoxConstraints(
-                      maxWidth: 90.w,
+                      maxWidth: 230.w,
                     ),
                     child: GestureDetector(
                       onTap: () {
