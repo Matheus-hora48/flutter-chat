@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat/common/style/style.dart';
 import 'package:flutter_chat/common/values/colors.dart';
 import 'package:flutter_chat/pages/application/index.dart';
 import 'package:flutter_chat/pages/contact/index.dart';
 import 'package:flutter_chat/pages/message/view.dart';
+import 'package:flutter_chat/pages/profile/view.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class ApplicationPage extends GetView<ApplicationController> {
@@ -16,14 +16,10 @@ class ApplicationPage extends GetView<ApplicationController> {
         physics: const NeverScrollableScrollPhysics(),
         controller: controller.pageController,
         onPageChanged: controller.handlePageChanged,
-        children: [
-          const MessagePage(),
-          const ContactPage(),
-          Container(
-            child: const Center(
-              child: Text('Perfil'),
-            ),
-          ),
+        children: const [
+          MessagePage(),
+          ContactPage(),
+          ProfilePage(),
         ],
       );
     }

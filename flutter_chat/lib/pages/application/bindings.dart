@@ -1,4 +1,5 @@
 import 'package:flutter_chat/pages/message/messagecontroller.dart';
+import 'package:flutter_chat/pages/profile/controller.dart';
 import 'package:get/get.dart';
 import '../contact/index.dart';
 import 'index.dart';
@@ -14,6 +15,9 @@ class ApplicationBinding implements Bindings {
     );
     Get.lazyPut<MessageController>(
       () => MessageController(),
+    );
+    Get.lazyPut<ProfileController>(
+      () => ProfileController(),
     );
   }
 }

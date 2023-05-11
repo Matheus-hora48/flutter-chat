@@ -12,7 +12,7 @@ AppBar transparentAppBar({
     backgroundColor: Colors.transparent,
     elevation: 0,
     flexibleSpace: Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(colors: [
           Color.fromARGB(255, 176, 106, 231),
           Color.fromARGB(255, 166, 112, 232),
