@@ -185,8 +185,8 @@ class ChatPage extends GetView<ChatController> {
                         width: 20.w,
                       ),
                       Container(
-                        height: 45.h,
-                        width: 45.h,
+                        height: 40.h,
+                        width: 40.h,
                         margin: EdgeInsets.only(bottom: 1.w),
                         decoration: const BoxDecoration(
                           color: AppColors.primaryElement,
@@ -206,8 +206,8 @@ class ChatPage extends GetView<ChatController> {
                         width: 10.w,
                       ),
                       Container(
-                        height: 45.h,
-                        width: 45.h,
+                        height: 40.h,
+                        width: 40.h,
                         margin: EdgeInsets.only(bottom: 1.w),
                         decoration: const BoxDecoration(
                           color: AppColors.primaryElement,
