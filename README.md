@@ -59,3 +59,24 @@ Essas tecnologias, Firebase e GetX, desempenham papéis essenciais em nosso chat
 ![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/4.png)
 
 ![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/5.png)
+
+### Tela de login
+
+![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/6.png)
+
+### Tela de conversas
+
+![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/7.png)
+
+### Tela de contatos
+
+![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/8.png)
+
+### Tela de perfil
+
+![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/9.png)
+
+
+### Chat
+
+![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/10.png)
