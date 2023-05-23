@@ -54,29 +54,42 @@ Essas tecnologias, Firebase e GetX, desempenham papéis essenciais em nosso chat
 
 ### Tela de introdução
 
-![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/3.png)
+Esta tela apresenta uma série de imagens que destacam as principais características do aplicativo de chat em tempo real. As imagens mostram diferentes aspectos do aplicativo e convidam os usuários a experimentar as conversas energéticas e instantâneas com pessoas de todo o mundo.
 
-![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/4.png)
+![Tela introducao](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/3.png)
 
-![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/5.png)
+![Tela introducao](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/4.png)
+
+![Tela introducao](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/5.png)
 
 ### Tela de login
 
-![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/6.png)
+Nesta tela, os usuários podem fazer login em suas contas existentes ou criar uma nova conta com o Google.
+
+![Tela login](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/6.png)
 
 ### Tela de conversas
 
-![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/7.png)
+Esta tela exibe a lista de conversas existentes do usuário. Cada item da lista geralmente mostra o nome ou foto do contato e uma prévia da última mensagem trocada. Os usuários podem tocar em uma conversa para abrir a tela de chat correspondente.
+
+![Tela conversas](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/7.png)
 
 ### Tela de contatos
 
-![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/8.png)
+Nesta tela, os usuários podem visualizar a lista de contatos ou amigos adicionados. Cada contato geralmente é representado por uma foto ou avatar. Essa tela permite aos usuários buscar e adicionar novos contatos.
+
+![Tela contatos](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/8.png)
 
 ### Tela de perfil
 
-![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/9.png)
+Nesta tela, os usuários podem visualizar e editar seu próprio perfil. Eles podem adicionar ou alterar sua foto de perfil, atualizar informações pessoais e configurar preferências relacionadas às notificações e privacidade.
 
+![Tela perfil](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/9.png)
 
 ### Chat
 
-![Tela principal](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/10.png)
+Esta é a tela principal onde os usuários podem trocar mensagens em tempo real com seus contatos. Ela exibe a conversa atual com as mensagens enviadas e recebidas. Os usuários podem digitar e enviar mensagens, visualizar mídias compartilhadas, como fotos, e interagir com recursos adicionais, como emojis e ver a localizacao do outro.
+
+![Chat](https://raw.githubusercontent.com/Matheus-hora48/flutter-chat/main/image-app/10.png)
+
+Essas telas em conjunto formam a experiência do usuário no aplicativo de chat em tempo real, permitindo que eles se conectem, conversem e compartilhem momentos com outras pessoas de forma instantânea e emocionante.
